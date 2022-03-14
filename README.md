@@ -19,6 +19,31 @@
     - symfony console make:controller
 
 
+## Twig ##
+Référence à twig : https://twig.symfony.com/
+Référence des méthodes liées à symfony : https://symfony.com/doc/current/reference/twig_reference.html#url
+Doc des templates Twig : https://twig.symfony.com/doc/3.x/templates.html
+
+## Doctrine ##
+Ne pas oublier de configurer le database_url -> 
+DATABASE_URL="mysql://root:legends@127.0.0.1:3306/demo_technobel_doctrine?serverVersion=8.0.28&charset=utf8mb4"
+
+1. Pour créer la base de donnée 
+    - symfony console doctrine:database:create
+
+2. Pour créer une entity : 
+    - symfony console make:entity -> suivre avec grande attention les instructions !!! LIRE RTFM
+
+3. Pour valider notre schéma (nos entités) 
+    - symfony console doctrine:schema:validate
+
+4. Créer une migration des entity (historique actuel des entity entre db et object)
+    - symfony console make:migration
+    1. Pour voir ou on en est entre les migrations de la db et du projet 
+        - symfony console doctrine:migrations:status
+    2. Pour appliquer la migration 
+        - symfony console doctrine:migrations:migrate
+
 # Exos #
 ### Exos 1 ###
 - Créez et lancez votre projet symfony avec 4 + admin controllers de votre choix, le thème est libre, seulement, il fera parti intégrante du 
