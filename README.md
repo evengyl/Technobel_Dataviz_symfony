@@ -34,15 +34,22 @@ DATABASE_URL="mysql://root:legends@127.0.0.1:3306/demo_technobel_doctrine?server
 2. Pour créer une entity : 
     - symfony console make:entity -> suivre avec grande attention les instructions !!! LIRE RTFM
 
-3. Pour valider notre schéma (nos entités) 
+3. Pour modifier une entity
+    - symfony console make:entity et taper le nom de votre entity déjà existante ! Bien lire ce que doctrine nous dit !
+
+4. Pour valider notre schéma (nos entités) 
     - symfony console doctrine:schema:validate
 
-4. Créer une migration des entity (historique actuel des entity entre db et object)
+5. Créer une migration des entity (historique actuel des entity entre db et object)
     - symfony console make:migration
     1. Pour voir ou on en est entre les migrations de la db et du projet 
         - symfony console doctrine:migrations:status
     2. Pour appliquer la migration 
         - symfony console doctrine:migrations:migrate
+    3. Pour effectuer le down (migration précédente)
+        - symfony console doctrine:migrations:migrate prev
+    4. Pour effectuer le up de la migrations suivante (migration courrante)
+        - symfony console doctrine:migrations:migrate next
 
 # Exos #
 ### Exos 1 ###
