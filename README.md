@@ -25,22 +25,22 @@ Référence des méthodes liées à symfony : https://symfony.com/doc/current/re
 Doc des templates Twig : https://twig.symfony.com/doc/3.x/templates.html
 
 ## Doctrine ##
-Ne pas oublier de configurer le database_url -> 
-DATABASE_URL="mysql://root:legends@127.0.0.1:3306/demo_technobel_doctrine?serverVersion=8.0.28&charset=utf8mb4"
+1. Ne pas oublier de configurer le database_url ->
+**DATABASE_URL="mysql://root:legends@127.0.0.1:3306/demo_technobel_doctrine?serverVersion=8.0.28&charset=utf8mb4"**
 
-1. Pour créer la base de donnée 
+1. **Pour créer la base de donnée** 
     - symfony console doctrine:database:create
 
-2. Pour créer une entity : 
+2. **Pour créer une entity :** 
     - symfony console make:entity -> suivre avec grande attention les instructions !!! LIRE RTFM
 
-3. Pour modifier une entity
+3. **Pour modifier une entity**
     - symfony console make:entity et taper le nom de votre entity déjà existante ! Bien lire ce que doctrine nous dit !
 
-4. Pour valider notre schéma (nos entités) 
+4. **Pour valider notre schéma (nos entités)** 
     - symfony console doctrine:schema:validate
 
-5. Créer une migration des entity (historique actuel des entity entre db et object)
+5. **Créer une migration des entity (historique actuel des entity entre db et object)**
     - symfony console make:migration
     1. Pour voir ou on en est entre les migrations de la db et du projet 
         - symfony console doctrine:migrations:status
