@@ -1,18 +1,18 @@
 ### Rappel des commandes ###
 1. Créer un projet : 
-- symfony new NomDuProjet --webapp
+    - symfony new NomDuProjet --webapp
 
-2. Pour démarrer le projet : 
-- symfony server:start
+2. **Pour démarrer le projet : **
+    - symfony server:start
 
 3. Pour couper le projet :
-- symfony server:stop
+    - symfony server:stop
 
 4. Pour voir la liste des serveurs actif :
-- symfony server:list
+    - symfony server:list
 
 5. Pour créer un controller : 
-- symfony console make:controller
+    - symfony console make:controller
 
 
 ### Exos 1 ###
