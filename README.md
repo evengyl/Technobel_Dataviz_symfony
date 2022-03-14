@@ -1,4 +1,6 @@
-### Rappel des commandes ###
+# Rappel des commandes #
+
+## Symfony ##
 1. **Créer un projet :**
     - symfony new NomDuProjet --webapp
 
@@ -11,10 +13,13 @@
 4. **Pour voir la liste des serveurs actif :**
     - symfony server:list
 
-5. **Pour créer un controller :** 
+
+## Symfony console make: ##
+1. **Pour créer un controller :** 
     - symfony console make:controller
 
 
+# Exos #
 ### Exos 1 ###
 - Créez et lancez votre projet symfony avec 4 + admin controllers de votre choix, le thème est libre, seulement, il fera parti intégrante du 
 cours pour le suivi du fil rouge, le formatteur partira sur le thème suivant : Hardware PC.
