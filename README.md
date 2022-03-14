@@ -68,3 +68,10 @@ et l'afficher dans la vue.
 3. *controller3 -> 2 actions -> 2 vues*
 4. *controller4 -> 2 actions -> 2 vues*
 5. *admin -> 1 actions -> 1 vues*
+
+
+### Exos 2 ###
+- Sur base des connaissances acquises en Doctrine, créer votre base de données si ce n'est pas encore fait.
+- Créer une entity pour chaque controller qui en aura besoin, exemple : product, categ, etc... etc...
+- Ces entity devront au moins avoir 2 champs autre que id -> créé par doctrine n'oubliez pas !
+- conseiles, suivez bien les étapes faite par le formatteur ! et regarder au readme !!! il est complet !
