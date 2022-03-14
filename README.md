@@ -40,16 +40,21 @@ Doc des templates Twig : https://twig.symfony.com/doc/3.x/templates.html
 4. **Pour valider notre schéma (nos entités)** 
     - symfony console doctrine:schema:validate
 
-5. **Créer une migration des entity (historique actuel des entity entre db et object)**
+5. **Créer une migration des entities (historique actuel des entities entre db et object 'php')**
     - symfony console make:migration
-    1. Pour voir ou on en est entre les migrations de la db et du projet 
-        - symfony console doctrine:migrations:status
-    2. Pour appliquer la migration 
-        - symfony console doctrine:migrations:migrate
-    3. Pour effectuer le down (migration précédente)
-        - symfony console doctrine:migrations:migrate prev
-    4. Pour effectuer le up de la migrations suivante (migration courrante)
-        - symfony console doctrine:migrations:migrate next
+    1. **Commandes utiles pour les migrations**
+
+        1. Pour voir ou on en est entre les migrations de la db et du projet 
+            - symfony console doctrine:migrations:status
+
+        2. Pour appliquer la migration 
+            - symfony console doctrine:migrations:migrate
+
+        3. Pour effectuer le down (migration précédente)
+            - symfony console doctrine:migrations:migrate prev
+            
+        4. Pour effectuer le up de la migrations suivante (migration courrante)
+            - symfony console doctrine:migrations:migrate next
 
 # Exos #
 ### Exos 1 ###
