@@ -14,7 +14,7 @@ class HomeController extends AbstractController //abstractController est le papa
     //Tout action ! pas fct..., dois répondre un élément de type Response
     {
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'Bonjour mon premier controller dans la vue',
+            'titlePage' => 'Bonjour mon premier controller dans la vue',
         ]);
         //ici on demande de rendre la vue home/index.html.twig, avec un tableau de paramètres, 
         //dont l'association clé valeur vaut 'controller_name' => 'Bonjour mon premier controller dans la vue'

@@ -8,11 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoriesController extends AbstractController
 {
-    #[Route('/categories', name: 'app_categories')]
-    public function index(): Response
+    #[Route('/categ', name: 'app_categ')]
+    public function categ(): Response
     {
-        return $this->render('categories/index.html.twig', [
-            'controller_name' => 'CategoriesController',
+        return $this->render('categories/categ.html.twig', [
+            'titlePage' => 'Liste des catégories',
+        ]);
+    }
+
+    #[Route("/categ/1/subcateg", name : "app_categ_sub_categ")]
+    public function categProd(): Response
+    {
+        return $this->render("categories/categSubcateg.html.twig", [
+            'titlePage' => 'Liste des sous catégories de cette catégorie principale'
         ]);
     }
 }
