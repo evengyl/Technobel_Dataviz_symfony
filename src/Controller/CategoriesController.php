@@ -3,24 +3,27 @@
 namespace App\Controller;
 
 use App\Repository\CategoriesRepository;
+use App\Repository\SubCategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategoriesController extends AbstractController
 {
-    private $repo;
+    private $categRepo;
+    private $subcategRepo;
 
-    public function __construct(CategoriesRepository $repo)
+    public function __construct(CategoriesRepository $categRepo, SubCategoriesRepository $subcategRepo)
     {
-        $this->repo = $repo;
+        $this->categRepo = $categRepo;
+        $this->subcategRepo = $subcategRepo;
     }
 
 
     #[Route('/categ', name: 'app_categ')]
     public function categ(): Response
     {
-        $allCateg = $this->repo->findAll();
+        $allCateg = $this->categRepo->findAll();
 
         return $this->render('categories/categ.html.twig', [
             'titlePage' => 'Liste des catégories',
@@ -29,11 +32,15 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    #[Route("/categ/1/subcateg", name : "app_categ_sub_categ")]
-    public function categProd(): Response
+    #[Route("/categ/1", name : "app_subcateg")]
+    public function subcateg(): Response
     {
-        return $this->render("categories/categSubcateg.html.twig", [
-            'titlePage' => 'Liste des sous catégories de cette catégorie principale'
+        $allSubcateg = $this->subcategRepo->findAll();
+
+        return $this->render('categories/subcateg.html.twig', [
+            'titlePage' => 'Liste des sous catégories',
+            'allSubcateg' => $allSubcateg,
+            //compact("allSubcateg")
         ]);
     }
 }

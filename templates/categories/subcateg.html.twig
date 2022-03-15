@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{titlePage}}{% endblock %}
+
+{% block body %}
+    <h1>{{titlePage}}</h1>
+
+    <div class="row">
+        {% for subcateg in allSubcateg %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ subcateg.name }}</h5>
+                    <p class="card-text">{{ subcateg.description }}</p>
+                    <a href="#" class="card-link">{{ subcateg.id }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

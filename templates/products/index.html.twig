@@ -4,4 +4,17 @@
 
 {% block body %}
     <h1>{{ titlePage }}</h1>
+
+    <div class="row">
+        {% for prod in allProd %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ prod.name }}</h5>
+                    <p class="card-text">Prix : {{ prod.price }} €</p>
+                    <p class="card-text">Poids : {{ prod.weight }} gr</p>
+                    <a href="#" class="card-link">{{ prod.id }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

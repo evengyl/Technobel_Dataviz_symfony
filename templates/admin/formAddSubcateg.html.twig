@@ -1,0 +1,15 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input name="description" type="text" class="form-control" id="description" placeholder="Description">
+    </div>
+
+    <input value="{{ csrf_token('MonSuperSecret') }}" type="hidden" name="csrf_token">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

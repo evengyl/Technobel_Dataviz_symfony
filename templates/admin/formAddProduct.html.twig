@@ -1,0 +1,20 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Prix Unitaire</label>
+        <input name="price" type="number" class="form-control" id="price" placeholder="Prix unitaire">
+    </div>
+
+    <div class="mb-3">
+        <label for="weight" class="form-label">Poids unitaire</label>
+        <input name="weight" type="number" class="form-control" id="weight" placeholder="Poinds unitaire">
+    </div>
+
+    <input value="{{ csrf_token('MonSuperSecret') }}" type="hidden" name="csrf_token">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
