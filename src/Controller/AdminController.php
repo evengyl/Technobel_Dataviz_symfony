@@ -5,8 +5,14 @@ namespace App\Controller;
 use App\Entity\Categories;
 use App\Entity\Products;
 use App\Entity\SubCategories;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+
 use Doctrine\ORM\EntityManagerInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,6 +31,48 @@ class AdminController extends AbstractController
     #[Route('/admin/addCateg', name : "app_admin_add_categ", methods:["POST", "GET"])]
     public function addCategories(Request $req, EntityManagerInterface $em) : Response
     {
+        $formAddCateg = $this->createFormBuilder()
+        ->add('name', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Nom de la catégorie"]
+        ])
+        ->add('description', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Description de la catégorie"]
+        ])
+        ->add('Submit', SubmitType::class, [
+            "attr" => ["class" => "btn btn-primary"]
+        ])
+        ->getForm();
+
+
+        $formAddCateg->handleRequest($req);
+
+        if($formAddCateg->isSubmitted() && $formAddCateg->isValid())
+        {
+            $tmp = $formAddCateg->getData();
+            
+            $newCateg = new Categories;
+            $newCateg->setName($tmp["name"]);
+            $newCateg->setDescription(($tmp["description"]));
+
+            $em->persist($newCateg);
+            $em->flush();
+            return $this->redirectToRoute("app_admin_add_categ");
+        }
+        else
+        {
+            return $this->render('admin/index.html.twig', [
+                "titlePage" => "ADMIN : Ajout d'une catégorie",
+                "fragment" => "admin/formAddCateg.html.twig",
+                "form" => $formAddCateg->createView()
+            ]);
+        }
+
+
+        
+
+
+        /* 
+        //Première version (il faut le formulaire dans le template !!!!)
         if($req->isMethod("GET"))
         {
             return $this->render('admin/index.html.twig', [
@@ -54,6 +102,7 @@ class AdminController extends AbstractController
         return $this->render("admin/index.html.twig", [
             "titlePage" => "Page d\'administration"
         ]);
+        */
                 
     }
 
