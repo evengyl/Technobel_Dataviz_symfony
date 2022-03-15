@@ -80,3 +80,8 @@ et l'afficher dans la vue.
 - Créer une entity pour chaque controller qui en aura besoin, exemple : product, categ, etc... etc...
 - Ces entity devront au moins avoir 2 champs autre que id -> créé par doctrine n'oubliez pas !
 - conseiles, suivez bien les étapes faite par le formatteur ! et regarder au readme !!! il est complet !
+
+
+### Exos 3 ###
+- Concevoir, sur base de votre thème choisi, toute la partie ADD dans l'admin, 
+- Prévoir également de pouvoir afficher toutes ces infos dans les menu adapté
