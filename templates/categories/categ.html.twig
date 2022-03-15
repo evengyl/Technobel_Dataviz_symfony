@@ -4,4 +4,16 @@
 
 {% block body %}
     <h1>{{titlePage}}</h1>
+
+    <div class="row">
+        {% for categ in allCateg %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ categ.name }}</h5>
+                    <p class="card-text">{{ categ.description }}</p>
+                    <a href="#" class="card-link">{{ categ.id }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
