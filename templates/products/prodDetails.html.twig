@@ -4,4 +4,15 @@
 
 {% block body %}
     <h1>{{ titlePage }}</h1>
+
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ prod.name }}</h5>
+                <p class="card-text">Prix : {{ prod.price }} €</p>
+                <p class="card-text">Poids : {{ prod.weight }} gr</p>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -6,6 +6,10 @@ use App\Entity\Categories;
 use App\Entity\Products;
 use App\Entity\SubCategories;
 
+use App\Repository\CategoriesRepository;
+
+use App\Form\CategoriesType;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
@@ -20,6 +24,8 @@ use Symfony\Component\Security\Core\Exception\TokenNotFoundException;
 
 class AdminController extends AbstractController
 {
+
+    
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
@@ -28,9 +34,135 @@ class AdminController extends AbstractController
         ]);
     }
 
+
+    #[Route('/admin/updateCateg/{id}', requirements: ["id" => "[0-9]+"], name: "app_admin_update_categ", methods : ['GET', 'POST'] )]
+    public function updateCateg(int $id, Request $req, EntityManagerInterface $em, CategoriesRepository $categRepo ) : Response
+    {
+        $updateCateg = $categRepo->find($id);
+
+        $formAddCateg = $this->createFormBuilder($updateCateg)
+        ->add('name', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Nom de la catégorie"]
+        ])
+        ->add('description', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Description de la catégorie"]
+        ])
+        ->add('Submit', SubmitType::class, [
+            "attr" => ["class" => "btn btn-primary"]
+        ])
+        ->getForm();
+
+        $formAddCateg->handleRequest($req);
+
+        if($formAddCateg->isSubmitted() && $formAddCateg->isValid())
+        {
+            $em->persist($updateCateg);
+            $em->flush();
+            return $this->redirectToRoute("app_categ");
+        }
+        else
+        {
+            return $this->render('admin/index.html.twig', [
+                "titlePage" => "ADMIN : Update d'une catégorie",
+                "fragment" => "admin/formUpdateCateg.html.twig",
+                "form" => $formAddCateg->createView()
+            ]);
+        }
+    }
+
     #[Route('/admin/addCateg', name : "app_admin_add_categ", methods:["POST", "GET"])]
     public function addCategories(Request $req, EntityManagerInterface $em) : Response
     {
+        $newCateg = new Categories;
+        $formAddCateg = $this->createForm(CategoriesType::class, $newCateg);
+
+        $formAddCateg->handleRequest($req);
+
+        if($formAddCateg->isSubmitted() && $formAddCateg->isValid())
+        {
+            $em->persist($newCateg);
+            $em->flush();
+            return $this->redirectToRoute("app_admin_add_categ");
+        }
+        else
+        {
+            return $this->render('admin/index.html.twig', [
+                "titlePage" => "ADMIN : Ajout d'une catégorie",
+                "fragment" => "admin/formAddCateg.html.twig",
+                "form" => $formAddCateg->createView()
+            ]);
+        }
+        /*
+        //quatrième version
+        $newCateg = new Categories;
+
+        $formAddCateg = $this->createFormBuilder($newCateg)
+        ->add('name', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Nom de la catégorie"]
+        ])
+        ->add('description', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Description de la catégorie"]
+        ])
+        ->add('Submit', SubmitType::class, [
+            "attr" => ["class" => "btn btn-primary"]
+        ])
+        ->getForm();
+
+
+        $formAddCateg->handleRequest($req);
+
+        if($formAddCateg->isSubmitted() && $formAddCateg->isValid())
+        {
+            $em->persist($newCateg);
+            $em->flush();
+            return $this->redirectToRoute("app_admin_add_categ");
+        }
+        else
+        {
+            return $this->render('admin/index.html.twig', [
+                "titlePage" => "ADMIN : Ajout d'une catégorie",
+                "fragment" => "admin/formAddCateg.html.twig",
+                "form" => $formAddCateg->createView()
+            ]);
+        }*/
+
+        /*
+        //troisème version
+        $newCateg = new Categories;
+
+        $formAddCateg = $this->createFormBuilder($newCateg)
+        ->add('name', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Nom de la catégorie"]
+        ])
+        ->add('description', TextType::class, [
+            "attr" => ["class" => "form-control", "placeholder" => "Description de la catégorie"]
+        ])
+        ->add('Submit', SubmitType::class, [
+            "attr" => ["class" => "btn btn-primary"]
+        ])
+        ->getForm();
+
+
+        $formAddCateg->handleRequest($req);
+
+        if($formAddCateg->isSubmitted() && $formAddCateg->isValid())
+        {
+            $em->persist($newCateg);
+            $em->flush();
+            return $this->redirectToRoute("app_admin_add_categ");
+        }
+        else
+        {
+            return $this->render('admin/index.html.twig', [
+                "titlePage" => "ADMIN : Ajout d'une catégorie",
+                "fragment" => "admin/formAddCateg.html.twig",
+                "form" => $formAddCateg->createView()
+            ]);
+        }
+        */
+
+        /*
+        //deuxième version
         $formAddCateg = $this->createFormBuilder()
         ->add('name', TextType::class, [
             "attr" => ["class" => "form-control", "placeholder" => "Nom de la catégorie"]
@@ -65,7 +197,7 @@ class AdminController extends AbstractController
                 "fragment" => "admin/formAddCateg.html.twig",
                 "form" => $formAddCateg->createView()
             ]);
-        }
+        }*/
 
 
         
