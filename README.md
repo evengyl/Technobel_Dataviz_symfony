@@ -85,3 +85,7 @@ et l'afficher dans la vue.
 ### Exos 3 ###
 - Concevoir, sur base de votre thème choisi, toute la partie ADD dans l'admin, 
 - Prévoir également de pouvoir afficher toutes ces infos dans les menu adapté
+
+
+### Récapitulatif final ###
+Sur base d'un thème au choix ! créer son CRUD (Create Read Update Delete)
