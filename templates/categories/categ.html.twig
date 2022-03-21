@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ categ.name }}</h5>
                     <p class="card-text">{{ categ.description }}</p>
-                    <a href="#" class="card-link">{{ categ.id }}</a>
+                    <a href="{{ url('app_admin_update_categ', {id : categ.id} )}}" class="card-link">Modifier</a>
                 </div>
             </div>
         {% endfor %}
